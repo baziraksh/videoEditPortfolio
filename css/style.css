@@ -307,6 +307,28 @@ body{
 .expertise a:hover{
     color: #6f34fe;
 }
+.expertise .filter-item{
+    border: none;
+    outline: none;
+    padding: 8px 16px;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--white);
+    border: 1px solid rgba(66, 220, 255, 0.2);
+    font-size: 1rem;
+    background: rgba(66, 220, 255, 0.05);
+    border-radius: 50px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .filter-item {
+        padding: 12px 16px;
+        font-size: 1.2rem;
+    }
+}
+
 .expertise .service-card{
     text-align: center;
     padding: 15px 15px;
