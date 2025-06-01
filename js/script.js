@@ -3,7 +3,7 @@ let htmlProgress = document.querySelector(".html-css"),
   htmlValue = document.querySelector(".html-progress");
 
 let htmlStartValue = 0,
-  htmlEndValue = 90,
+  htmlEndValue = 95,
   htmlspeed = 30;
 
 let progresshtml = setInterval(() => {
@@ -24,7 +24,7 @@ let javascriptProgress = document.querySelector(".javascript"),
   javascriptValue = document.querySelector(".javascript-progress");
 
 let javascriptStartValue = 0,
-  javascriptEndValue = 75,
+  javascriptEndValue = 80,
   jsspeed = 30;
 
 let progressjs = setInterval(() => {
@@ -45,7 +45,7 @@ let phpProgress = document.querySelector(".php"),
   phpValue = document.querySelector(".php-progress");
 
 let phpStartValue = 0,
-  phpEndValue = 80,
+  phpEndValue = 85,
   phpspeed = 30;
 
 let progressphp = setInterval(() => {
@@ -66,7 +66,7 @@ let reactProgress = document.querySelector(".reactjs"),
   reactValue = document.querySelector(".reactjs-progress");
 
 let reactStartValue = 0,
-  reactEndValue = 30,
+  reactEndValue = 35,
   rjsspeed = 30;
 
 let progressreact = setInterval(() => {
@@ -82,6 +82,81 @@ let progressreact = setInterval(() => {
   }
 }, rjsspeed);
 
+// Premiere Pro progress circular bar 
+let premiereProgress = document.querySelector(".premiere-pro"),
+  premiereValue = document.querySelector(".premiere-pro-progress");
+
+let premiereStartValue = 0,
+  premiereEndValue = 85,
+  premierespeed = 30;
+
+let progressPremiere = setInterval(() => {
+  premiereStartValue++;
+
+  premiereValue.textContent = `${premiereStartValue}%`;
+  premiereProgress.style.background = `conic-gradient(#fca61f ${premiereStartValue * 3.6}deg, #ededed 0deg)`;
+
+  if (premiereStartValue == premiereEndValue) {
+    clearInterval(progressPremiere);
+  }
+}, premierespeed);
+
+// After Effects progress circular bar 
+let afterEffectsProgress = document.querySelector(".after-effects"),
+  afterEffectsValue = document.querySelector(".after-effects-progress");
+
+let afterEffectsStartValue = 0,
+  afterEffectsEndValue = 80,
+  aespeed = 30;
+
+let progressAE = setInterval(() => {
+  afterEffectsStartValue++;
+
+  afterEffectsValue.textContent = `${afterEffectsStartValue}%`;
+  afterEffectsProgress.style.background = `conic-gradient(#7d2ae8 ${afterEffectsStartValue * 3.6}deg, #ededed 0deg)`;
+
+  if (afterEffectsStartValue == afterEffectsEndValue) {
+    clearInterval(progressAE);
+  }
+}, aespeed);
+
+// DaVinci Resolve progress circular bar 
+let davinciProgress = document.querySelector(".davinci-resolve"),
+  davinciValue = document.querySelector(".davinci-resolve-progress");
+
+let davinciStartValue = 0,
+  davinciEndValue = 82,
+  drspeed = 30;
+
+let progressDavinci = setInterval(() => {
+  davinciStartValue++;
+
+  davinciValue.textContent = `${davinciStartValue}%`;
+  davinciProgress.style.background = `conic-gradient(#20c997 ${davinciStartValue * 3.6}deg, #ededed 0deg)`;
+
+  if (davinciStartValue == davinciEndValue) {
+    clearInterval(progressDavinci);
+  }
+}, drspeed);
+
+// Photoshop progress circular bar 
+let photoshopProgress = document.querySelector(".photoshop"),
+  photoshopValue = document.querySelector(".photoshop-progress");
+
+let photoshopStartValue = 0,
+  photoshopEndValue = 87,
+  psspeed = 30;
+
+let progressPhotoshop = setInterval(() => {
+  photoshopStartValue++;
+
+  photoshopValue.textContent = `${photoshopStartValue}%`;
+  photoshopProgress.style.background = `conic-gradient(#3f396d ${photoshopStartValue * 3.6}deg, #ededed 0deg)`;
+
+  if (photoshopStartValue == photoshopEndValue) {
+    clearInterval(progressPhotoshop);
+  }
+}, psspeed);
 
 // filter using javascript
 $(document).ready(function () {
