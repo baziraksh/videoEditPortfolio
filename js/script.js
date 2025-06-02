@@ -217,3 +217,19 @@ mybutton.addEventListener("click",function(){
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 });
+
+// Handle CV download for better mobile compatibility
+document.addEventListener('DOMContentLoaded', function() {
+  const downloadLink = document.querySelector('.c-btn.h-btn');
+  if (downloadLink) {
+    ['touchstart', 'click'].forEach(function(evt) {
+      downloadLink.addEventListener(evt, function(e) {
+        e.preventDefault();
+        const pdfUrl = this.getAttribute('href');
+        setTimeout(function() {
+          window.location.href = pdfUrl;
+        }, 100);
+      }, false);
+    });
+  }
+});
