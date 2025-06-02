@@ -53,12 +53,20 @@ body{
 .c-btn{
     border: 1px solid rgba(66, 220, 255, 0.3);
     background: linear-gradient(135deg, rgba(66, 220, 255, 0.1) 0%, rgba(66, 220, 255, 0.2) 100%);
-    color: #42dcff;
+    color: #42dcff !important;
     font-size: 1.2rem;
     transition: all 0.3s ease;
     box-shadow: 0 0 15px rgba(66, 220, 255, 0.3);
     text-shadow: 0 0 5px rgba(66, 220, 255, 0.5);
     backdrop-filter: blur(5px);
+    display: inline-block;
+    width: auto;
+    min-width: 200px;
+    text-align: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    touch-action: manipulation;
 }
 
 .c-btn:hover {
