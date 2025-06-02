@@ -441,7 +441,8 @@
         </div>
         <div class="col-md-5 col-10 mt-3 mt-md-0" data-aos="slide-left">
           <div class="contact-form">
-            <form id="contactForm" method="POST" action="http://192.168.172.162/portfolio-website-main/save.php">
+            <form id="contactForm" onsubmit="return submitForm(event)">
+              <div id="formMessage"></div>
               <div class="mb-3">
                 <input
                   type="text"
@@ -552,6 +553,67 @@
     <!-- custom js file linking -->
     <script src="js/script.js"></script>
 
+    <!-- Form submission script -->
+    <script>
+    async function submitForm(event) {
+      event.preventDefault();
+      const form = document.getElementById('contactForm');
+      const formMessage = document.getElementById('formMessage');
+      const formData = new FormData(form);
+
+      try {
+        // Send to both PHP/MySQL and Formspree simultaneously
+        const [phpResponse, formspreeResponse] = await Promise.all([
+          // Send to PHP/MySQL
+          fetch('http://localhost/portfolio-website-main/save.php', {
+            method: 'POST',
+            body: formData
+          }).catch(error => {
+            console.log('PHP submission error:', error);
+            formMessage.innerHTML += '<div class="alert alert-warning">Database Error: ' + error + '</div>';
+            return { ok: false };
+          }),
+
+          // Send to Formspree
+          fetch('https://formspree.io/f/xblyjdyv', {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).catch(error => {
+            console.log('Formspree submission error:', error);
+            return { ok: false };
+          })
+        ]);
+
+        let successMessage = '';
+
+        // Check PHP/MySQL result
+        if (phpResponse.ok) {
+          const result = await phpResponse.json();
+          successMessage += 'Saved to database. ';
+        }
+
+        // Check Formspree result
+        if (formspreeResponse.ok) {
+          const result = await formspreeResponse.json();
+          successMessage += 'Email notification sent.';
+        }
+
+        if (successMessage) {
+          formMessage.innerHTML = '<div class="alert alert-success">' + successMessage + '</div>';
+          form.reset();
+        } else {
+          throw new Error('Both submissions failed');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        formMessage.innerHTML = '<div class="alert alert-danger">Error sending message. Please try again.</div>';
+      }
+      return false;
+    }
+    </script>
 
 
   </body>
